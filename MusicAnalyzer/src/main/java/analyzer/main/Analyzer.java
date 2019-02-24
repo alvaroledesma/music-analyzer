@@ -5,8 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import acrcloud.ACRCloudExtrTool;
-import acrcloud.ACRCloudRecognizer;
+import com.acrcloud.utils.ACRCloudExtrTool;
+import com.acrcloud.utils.ACRCloudRecognizer;
+
 import analyzer.json.MasterJSON;
 import analyzer.utils.FileFilters;
 import analyzer.utils.FileProcessor;
