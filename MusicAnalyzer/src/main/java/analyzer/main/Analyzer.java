@@ -14,16 +14,16 @@ import analyzer.utils.MP3Manager;
 
 public class Analyzer {
 
-	private static File originDirectory;
-	private static File endDirectory;
-	private static File exceptionDirectory;
+	private static File originDirectory = new File("/Users/alvaroledesma/Desktop/PTSD Music");
+	private static File endDirectory = new File("/Users/alvaroledesma/Desktop/New Music");
+	private static File exceptionDirectory = new File("Users/alvaroledesma/Desktop/EXEPT");
 
 	private static List<File> allFiles;
 	private static List<File> filteredFiles;
 
-	private static final String HOST = "**********";
-	private static final String ACCESS_KEY = "**********";
-	private static final String ACCESS_SECRET = "**********";
+	private static final String HOST = "identify-us-west-2.acrcloud.com";
+	private static final String ACCESS_KEY = "e11ab73367d9186069c81405222670e8";
+	private static final String ACCESS_SECRET = "FrBnNOS4pKtRjYx7EsLj4W9k2cn9c191kqrbN1fF";
 	private static final int TIMEOUT_SECONDS = 10;
 
 	public static void main(String[] args) throws Exception {
@@ -37,16 +37,17 @@ public class Analyzer {
 		ACRCloudRecognizer re = new ACRCloudRecognizer(config);
 
 		FileProcessor fp = new FileProcessor();
-		originDirectory = fp.getOriginDirectory();
+//		originDirectory = fp.getOriginDirectory();
 		allFiles = fp.FileOrDirectory(originDirectory);
 		filteredFiles = fp.filterFiles(FileFilters.MP3_FILES, allFiles);
 
-		endDirectory = fp.getEndDirectory();
+//		endDirectory = fp.getEndDirectory();
 
-		exceptionDirectory = fp.getExceptionDirectory();
+//		exceptionDirectory = fp.getExceptionDirectory();
 
 		for (File x : filteredFiles) {
 			String result = re.recognizeByFile(x.toString(), 30);
+			System.out.println(result);
 
 			int fileDurationMS = ACRCloudExtrTool.getDurationMSByFile(x.toString());
 
